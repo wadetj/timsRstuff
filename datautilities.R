@@ -28,6 +28,7 @@ describe<-function(x) {
 #' data(mtcars)
 #' dvars<-c("am", "cyl", "wt")
 #' newdat<-dropvars(mtcars, dvars)
+#' testing
 
 dropvars<-function(dat, x) {
 	xtmp <- names(dat) %in% c(x)
