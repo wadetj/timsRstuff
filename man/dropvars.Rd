@@ -21,5 +21,4 @@ drops or keeps variables from a dataframe
 data(mtcars)
 dvars<-c("am", "cyl", "wt")
 newdat<-dropvars(mtcars, dvars)
-testing
 }
