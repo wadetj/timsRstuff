@@ -4,15 +4,17 @@
 \alias{mav2}
 \title{simple moving average}
 \usage{
-mav2(dat, lagdat)
+mav2(dat, lagdat, fill = FALSE)
 }
 \arguments{
 \item{dat}{A numeric vector}
 
 \item{lagdat}{number of lags for moving average}
+
+\item{fill}{if TRUE fills in NAs to create of vector of original length (default FALSE)}
 }
 \value{
-A numeric vector of length length(dat)-(lagdat+1)
+A numeric vector of length length(dat)-(lagdat+1), or length(dat)
 }
 \description{
 simple moving average
@@ -23,4 +25,5 @@ presently cannot handle NA or missing data
 \examples{
 x<-c(1:100)
 mav2(x, 5)
+mav2(x, 10, fill=TRUE)
 }
