@@ -83,14 +83,16 @@ replacedf<-function(dat, from, to) {
 #' simple moving average
 #' @param dat A numeric vector
 #' @param lagdat number of lags for moving average
-#' @return A numeric vector of length length(dat)-(lagdat+1)
+#' @param fill if TRUE fills in NAs to create of vector of original length (default FALSE)
+#' @return A numeric vector of length length(dat)-(lagdat+1), or length(dat)
 #' @note presently cannot handle NA or missing data 
 #' @examples
 #' x<-c(1:100)
 #' mav2(x, 5)
+#' mav2(x, 10, fill=TRUE)
 #' @export
 
- mav2<-function(dat, lagdat) {
+ mav2<-function(dat, lagdat, fill=FALSE) {
   mn<-NULL
   ln<-length(dat)
   
@@ -98,12 +100,18 @@ replacedf<-function(dat, from, to) {
     
     end<-i
     start<-i-(lagdat-1)
-    #pos<-i-(lagdat-1)
     mn[start]<-mean(c(dat[start:end]), na.rm=T)
     
   }
-  return(mn)
- }
+   if(fill==FALSE) {
+    return(mn)
+  }
+  if(fill==TRUE) {
+    mn<-c(rep(NA, lagdat-1), mn)
+    return(mn)  
+  }
+
+}
  
    
  
