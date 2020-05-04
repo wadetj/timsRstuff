@@ -4,6 +4,7 @@
 #' @examples
 #' x<-rnorm(100)
 #' describe(x)
+#' @export
 
 describe<-function(x) {
 	n <- length(na.omit(x))
@@ -28,6 +29,7 @@ describe<-function(x) {
 #' data(mtcars)
 #' dvars<-c("am", "cyl", "wt")
 #' newdat<-dropvars(mtcars, dvars)
+#' @export
 
 dropvars<-function(dat, x) {
 	xtmp <- names(dat) %in% c(x)
@@ -49,6 +51,7 @@ keepvars<-function(dat, x) {
 #' @return A character vector
 #' @examples
 #' substrRight("testing", 3)
+#' @export
 
 substrRight <- function(x, n){
   substr(x, nchar(x)-n+1, nchar(x))
@@ -68,6 +71,7 @@ substrRight <- function(x, n){
 #' newdat<-replacedf(iris, 1.2, 1.25)
 #' df<-data.frame(a=c(-99, 1, 2, 3, -99), b=c(1, 2, 3, -99, 4))
 #' replacedf(df, -99, NA)
+#' @export
 
 
 replacedf<-function(dat, from, to) {
@@ -84,7 +88,8 @@ replacedf<-function(dat, from, to) {
 #' @examples
 #' x<-c(1:100)
 #' mav2(x, 5)
- 
+#' @export
+
  mav2<-function(dat, lagdat) {
   mn<-NULL
   ln<-length(dat)

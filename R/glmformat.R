@@ -11,6 +11,8 @@
 #' data(mtcars)
 #' otemp<-with(mtcars, glm(vs~mpg+wt, family=binomial))
 #' glmORs(otemp)
+#' @export
+
 
 glmORs<-function(x, dps=3){
   ors<-exp(x$coefficients)
@@ -42,6 +44,7 @@ glmORs<-function(x, dps=3){
 #' data(mtcars)
 #' otemp<-with(mtcars, glm(mpg~+wt+vs))
 #' glmCIs(otemp)
+#' @export
 
  glmCIs<-function(x, dps=3){
   b<-x$coefficients

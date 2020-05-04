@@ -15,6 +15,7 @@
 #' tabpct2(iris$Species, iris$hilo)
 #' tabpct2(iris$Species, iris$hilo, collab=c("low", "Pct.", "hi", "Pct."))
 #' tabpct2(iris$hilo, iris$Species, rowlab=c("low", "hi", "Total"), collab=c("set", "%", "vers", "%", "virg", "%"))
+#' @export
 
 
 tabpct2=function(row, col=NULL, collab="N", tex=FALSE, rowlab=NULL) {
