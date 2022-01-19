@@ -3,22 +3,21 @@
 #' @param x A numeric, complex or logical vector
 #' @examples
 #' x<-rnorm(100)
-#' describe(x)
+#' describe(x, dp=5)
 #' @export
 
-describe<-function(x) {
-	n <- length(na.omit(x))
-	xbar <- mean(x, na.rm=T)
-	md <- median(x, na.rm=T)
-	s2 <- var(x, na.rm=T)
-	s <- sqrt(var(x, na.rm=T))
-	se <- s/sqrt(n)
-	xmin <- min(x, na.rm=T)
-	xmax <- max(x, na.rm=T)
-	rng <- xmax - xmin
-	cbind(n, xbar, md, s2, s, se, xmin, xmax, rng)
+describe<-function(x, dp=3) {
+  n <- length(na.omit(x))
+  xbar <- round(mean(x, na.rm=T), dp)
+  md <- round(median(x, na.rm=T), dp)
+  s2 <- round(var(x, na.rm=T), dp)
+  s <- round(sqrt(var(x, na.rm=T)), dp)
+  se <- round(s/sqrt(n), dp)
+  xmin <- round(min(x, na.rm=T), dp)
+  xmax <- round(max(x, na.rm=T), dp)
+  rng <- xmax - xmin
+  cbind(n, xbar, md, s2, s, se, xmin, xmax, rng)
 }
-
 
 
 #' drops or keeps variables from a dataframe
