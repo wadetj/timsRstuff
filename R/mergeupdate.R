@@ -1,4 +1,4 @@
-
+   
 #goal- merge that updates values from dataset2 to dataset1
 #if NA should keep existing value in dataset1
 #variables not in dataset1 but in dataset2 should be added to dataset1
@@ -57,13 +57,15 @@ if(length(update.vars)>0 ) {
   #   newdf[,varname]<-df1[,varname]
   #   
   # }
+
   
+if(length(df2only)>0){    
   for(i in 1:length(df2only)) {
     varname<-paste(df2only[i])
     newdf[,varname]<-NA
     newdf[,varname][match(newdf[,id1], df2[,id2])]<-df2[,varname][match(newdf[,id1], df2[,id2])]
-    
   }
+}
 
   return(newdf)
   
@@ -80,10 +82,10 @@ iris2$color="red"
 iris$height="tall"
 xx<-mergeupdate(iris, iris2, id="id")
 
-
-dumb<-function(a, b, c) {
-  if(a!=10) stop("a must equal 10")
-  print("yes a=10")               
-}
-
-  
+# 
+# dumb<-function(a, b, c) {
+#   if(a!=10) stop("a must equal 10")
+#   print("yes a=10")               
+# }
+# 
+#   
