@@ -1,13 +1,31 @@
-   
-#goal- merge that updates values from dataset2 to dataset1
-#if NA should keep existing value in dataset1
-#variables not in dataset1 but in dataset2 should be added to dataset1
-#seems to work- does not handle many to 1 merge
-#need to add checks if ids are unique
-#add merge type for 1:1 and 1:m (df1- single observation, df2, multiple obs)
-#1 to many merges expands original dataset(df1), creates new id and duplicates
-#values for which there are no values in second dataset
-#also 1:m resorts dataset based on id
+
+#' 1:1 or 1:many update merge
+#' Updates values in df1 with values from df2
+#' If df2 columns contain NAs, df1 values are retained
+#'  1 to many merges expands original dataset(df1), creates new id and duplicates values for which there are no values in second dataset
+#'  also 1:m resorts dataset based on id 
+#'
+#' @param df1 dataframe to be updated
+#' @param df2 dataframe with new observations or data to update
+#' @param id  common id
+#' @param id1 id for dataframe 1 (optional if common id not specified)
+#' @param id2 id for dataframe 2 (optional if common id not specified)
+#' @param mergtype character 1:1 (default) or 1:m
+#' @return dataframe
+#' @examples
+#' data(iris)
+#' iris2<-iris
+#' iris$id<-1:dim(iris)[1]
+#' iris2<-iris
+#' iris2$Sepal.Length<-rnorm(150)
+#' iris2$Petal.Width[25:75]<-rnorm(51)
+#' iris2$color="red"
+#' iris$height="tall"
+#' xx<-mergeupdate(iris, iris2, id="id")
+#' data1<-data.frame(id=rep(1:10), x=1, y=10*runif(10), z=10)
+#' data3<-data.frame(id=rep(1:10, 3), z=rnorm(30), y=100*runif(30))
+#' mergeupdate(data1, data3, id="id", mergetype="1:m")
+#' @export
 
 mergeupdate<-function(df1, df2, id, id1, id2, mergetype="1:1"){
  newdf<-df1
@@ -71,20 +89,4 @@ if(length(df2only)>0){
   return(newdf)
   
 }
-
-# 
-# data(iris)
-# iris2<-iris
-# iris$id<-1:dim(iris)[1]
-# iris2<-iris
-# iris2$Sepal.Length<-rnorm(150)
-# iris2$Petal.Width[25:75]<-rnorm(51)
-# iris2$color="red"
-# iris$height="tall"
-# xx<-mergeupdate(iris, iris2, id="id")
-# 
-# data1<-data.frame(id=rep(1:10), x=1, y=10*runif(10), z=10)
-# data3<-data.frame(id=rep(1:10, 3), z=rnorm(30), y=100*runif(30))
-# mergeupdate(data1, data3, id="id", mergetype="1:m")
-# 
 
