@@ -1,17 +1,17 @@
 
 #' 1:1 or 1:many update merge
-#' Updates values in df1 with values from df2
-#' If df2 columns contain NAs, df1 values are retained
-#'  1 to many merges expands original dataset(df1), creates new id and duplicates values for which there are no values in second dataset
-#'  also 1:m resorts dataset based on id 
-#'
+
 #' @param df1 dataframe to be updated
 #' @param df2 dataframe with new observations or data to update
 #' @param id  common id
 #' @param id1 id for dataframe 1 (optional if common id not specified)
 #' @param id2 id for dataframe 2 (optional if common id not specified)
-#' @param mergtype character 1:1 (default) or 1:m
+#' @param mergetype character 1:1 (default) or 1:m
 #' @return dataframe
+#' @note Updates values in df1 with values from df2
+#' @note If df2 columns contain NAs, df1 values are retained
+#' @note 1 to many merges expands original dataset(df1), creates new id and duplicates values for which there are no values in second dataset
+#' @note also 1:m re-sorts dataset based on id 
 #' @examples
 #' data(iris)
 #' iris2<-iris

@@ -7,4 +7,4 @@ Description: Various utilities for data manipulation and analysis
 Imports: 
   gdata
 License: None
-RoxygenNote: 7.1.0
+RoxygenNote: 7.2.0
