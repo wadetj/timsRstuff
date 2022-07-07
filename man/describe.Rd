@@ -4,15 +4,17 @@
 \alias{describe}
 \title{produces summary statistics for a numeric vector}
 \usage{
-describe(x)
+describe(x, dp = 3)
 }
 \arguments{
-\item{x}{A numeric, complex or logical vector}
+\item{dp}{- decimal places to round (default=3)}
+
+\item{x-}{numeric, complex or logical vector}
 }
 \description{
 produces summary statistics for a numeric vector
 }
 \examples{
 x<-rnorm(100)
-describe(x)
+describe(x, dp=5)
 }

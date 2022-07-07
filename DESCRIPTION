@@ -1,10 +1,10 @@
 Package: timsRstuff
 Title: Various utilities
-Version: 0.1
+Version: 0.2
 Authors@R: person("Timothy", "Wade", email = "wadetj@gmail.com",
                   role = c("aut", "cre"))
 Description: Various utilities for data manipulation and analysis
 Imports: 
   gdata
 License: None
-RoxygenNote: 7.1.0
+RoxygenNote: 7.2.0
