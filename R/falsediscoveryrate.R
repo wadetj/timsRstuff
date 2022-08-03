@@ -24,6 +24,7 @@
 #' falsediscovery(pvals)
 #' falsediscovery(pvals, qstar=0.2)
 #' falsediscovery(pvals, method="bon")
+#' @export
 
 falsediscovery<-function(pvalues, qstar=0.05, method="fdr"){
 if(method=="fdr"){
