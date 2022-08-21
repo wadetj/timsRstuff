@@ -2,6 +2,7 @@
 
 export(describe)
 export(dropvars)
+export(falsediscovery)
 export(glmCIs)
 export(glmORs)
 export(mav2)
