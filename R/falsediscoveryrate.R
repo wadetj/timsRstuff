@@ -40,12 +40,7 @@ if(method=="fdr"){
     padj=-1
   }
   crit<-ifelse(pvals<=padj, "*", "")
-   #calculate adjusted p-values for fdr
-  p_adj<-(n/len)*pvals
-  for(i in seq(n-1, 1, -1)) {
-	p_adj[i]<-ifelse(p_adj[i]<p_adj[i+1], p_adj[i], p_adj[i+1])
-	}
-  dat<-cbind.data.frame(pvals, fd, crit, p_adj)
+  dat<-cbind.data.frame(pvals, fd, crit)
   return(dat)
   print(dat)
 }
@@ -54,10 +49,7 @@ if(method=="bon"){
 	qadj<-qstar/length(pvalues)
 	pvals<-sort(pvals)
 	crit<-ifelse(pvals<=qadj, "*", "")
-	#calculate adjusted p-values for bonferroni
-	p_adj<-pvals*length(pvalues)
-	p_adj<-ifelse(p_adj>1, 1, p_adj)
-	dat<-cbind.data.frame(pvals, crit, p_adj)
+	dat<-cbind.data.frame(pvals, crit)
 	return(dat)
 	print(dat)
   }
