@@ -1,4 +1,5 @@
 #' p-value and confidence interval adjustment for multiple comparisons
+#' 
 #' takes numeric vector of p-values and adjusts for multiple comparisons using false discovery rate (benjamini and hochberg 1995) and bonferroni (method="bon")
 #' optionally takes numeric vectors of estimates and standard errors and produces confidence intervals adjusted for multiple comparisons (benjamini et al. 2005)
 #' @param pvalues numeric vector of p-values

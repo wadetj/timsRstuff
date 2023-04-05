@@ -2,9 +2,17 @@
 % Please edit documentation in R/falsediscoveryrate.R
 \name{falsediscovery}
 \alias{falsediscovery}
-\title{provides adjustment for multiple comparisons based}
+\title{p-value and confidence interval adjustment for multiple comparisons}
 \usage{
-falsediscovery(pvalues, qstar = 0.05, method = "fdr")
+falsediscovery(
+  pvalues,
+  qstar = 0.05,
+  method = "fdr",
+  dp = 5,
+  ci = FALSE,
+  ses = NULL,
+  estimates = NULL
+)
 }
 \arguments{
 \item{pvalues}{numeric vector of p-values}
@@ -12,12 +20,19 @@ falsediscovery(pvalues, qstar = 0.05, method = "fdr")
 \item{qstar}{overall alpha level (default=0.05)}
 
 \item{method}{"fdr" (default) or "bon"}
+
+\item{ci}{FALSE (default) or TRUE to produce adjusted confidence intervals}
+
+\item{ses}{numeric vector of standard errors, required if ci=TRUE}
+
+\item{estimates}{numeric vector of estimates, required if ci=TRUE}
 }
 \value{
-dataframe with starred p-values that meet adjusted significance level
+dataframe with starred p-values and optionally adjusted confidence intervals that meet adjusted significance level.
 }
 \description{
-takes numeric vector of p-values and adjusts for multiple comparisons using false discovery rate (benjamini and hochberg 1995, default) and bonferroni (method="bon")
+takes numeric vector of p-values and adjusts for multiple comparisons using false discovery rate (benjamini and hochberg 1995) and bonferroni (method="bon")
+optionally takes numeric vectors of estimates and standard errors and produces confidence intervals adjusted for multiple comparisons (benjamini et al. 2005)
 }
 \examples{
 from benjamini and hochberg 1995
