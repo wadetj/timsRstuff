@@ -98,7 +98,7 @@ falsediscovery<-function(pvalues, qstar=0.05, method="fdr", dp=5, ci=FALSE, ses=
 
 
 #' @examples
-#' #example from benjamini and hochberg 1995
+#' #from benjamini and hochberg 1995
 #' #bonferroni is more conservative
 #' pvals<-c(0.0001, 0.0004, 0.0019, 0.0095, 0.0201, 0.0278, 0.0298, 0.0344, 0.0459, 0.3240, 0.4262, 0.5719, 0.6528, 0.7590, 1.00)
 #' ran<-runif(15)
@@ -124,5 +124,6 @@ falsediscovery<-function(pvalues, qstar=0.05, method="fdr", dp=5, ci=FALSE, ses=
 #' falsediscovery(pvals, qstar=0.2)
 #' falsediscovery(pvals, method="bon")
 #' #note need to update example and add references
+#' @export
 
 

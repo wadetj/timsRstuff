@@ -7,9 +7,9 @@
 describe(x, dp = 3)
 }
 \arguments{
-\item{dp}{- decimal places to round (default=3)}
+\item{x}{numeric, complex or logical vector}
 
-\item{x-}{numeric, complex or logical vector}
+\item{dp}{decimal places to round (default=3)}
 }
 \description{
 produces summary statistics for a numeric vector
