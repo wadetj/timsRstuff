@@ -1,4 +1,4 @@
-Package: timsRstuff
+Package: CIsforFDR
 Title: Various utilities
 Version: 0.3
 Authors@R: person("Timothy", "Wade", email = "wadetj@gmail.com",
