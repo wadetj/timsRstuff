@@ -35,8 +35,9 @@ takes numeric vector of p-values and adjusts for multiple comparisons using fals
 optionally takes numeric vectors of estimates and standard errors and produces confidence intervals adjusted for multiple comparisons (benjamini et al. 2005)
 }
 \examples{
-from benjamini and hochberg 1995
+#from benjamini and hochberg 1995
 pvals<-c(0.0001, 0.0004, 0.0019, 0.0095, 0.0201, 0.0278, 0.0298, 0.0344, 0.0459, 0.3240, 0.4262, 0.5719, 0.6528, 0.7590, 1.00)
+falsediscovery(pvals)
 falsediscovery(pvals, method="bon")
 
 #from https://www.statisticshowto.com/benjamini-hochberg-procedure/
@@ -54,4 +55,5 @@ pvals<-pvals[-1]
 falsediscovery(pvals)
 falsediscovery(pvals, qstar=0.2)
 falsediscovery(pvals, method="bon")
+#note need example with CIs
 }

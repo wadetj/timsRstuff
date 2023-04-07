@@ -10,7 +10,7 @@
 #' @param estimates numeric vector of estimates, required if ci=TRUE
 #' @return dataframe with starred p-values and optionally adjusted confidence intervals that meet adjusted significance level. 
 #' @examples 
-#' from benjamini and hochberg 1995
+#' #from benjamini and hochberg 1995
 #' pvals<-c(0.0001, 0.0004, 0.0019, 0.0095, 0.0201, 0.0278, 0.0298, 0.0344, 0.0459, 0.3240, 0.4262, 0.5719, 0.6528, 0.7590, 1.00)
 #' falsediscovery(pvals)
 #' falsediscovery(pvals, method="bon")
