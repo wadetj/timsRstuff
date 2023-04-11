@@ -1,7 +1,7 @@
 
 #' produces summary statistics for a numeric vector
-#' @param x-  numeric, complex or logical vector
-#' @param dp - decimal places to round (default=3)
+#' @param x  numeric, complex or logical vector
+#' @param dp decimal places to round (default=3)
 #' @examples
 #' x<-rnorm(100)
 #' describe(x, dp=5)

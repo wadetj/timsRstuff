@@ -2,9 +2,17 @@
 % Please edit documentation in R/falsediscoveryrate.R
 \name{falsediscovery}
 \alias{falsediscovery}
-\title{provides adjustment for multiple comparisons based}
+\title{p-value and confidence interval adjustment for multiple comparisons}
 \usage{
-falsediscovery(pvalues, qstar = 0.05, method = "fdr")
+falsediscovery(
+  pvalues,
+  qstar = 0.05,
+  method = "fdr",
+  dp = 5,
+  ci = FALSE,
+  ses = NULL,
+  estimates = NULL
+)
 }
 \arguments{
 \item{pvalues}{numeric vector of p-values}
@@ -12,16 +20,24 @@ falsediscovery(pvalues, qstar = 0.05, method = "fdr")
 \item{qstar}{overall alpha level (default=0.05)}
 
 \item{method}{"fdr" (default) or "bon"}
+
+\item{ci}{FALSE (default) or TRUE to produce adjusted confidence intervals}
+
+\item{ses}{numeric vector of standard errors, required if ci=TRUE}
+
+\item{estimates}{numeric vector of estimates, required if ci=TRUE}
 }
 \value{
-dataframe with starred p-values that meet adjusted significance level
+dataframe with starred p-values and optionally adjusted confidence intervals that meet adjusted significance level.
 }
 \description{
-takes numeric vector of p-values and adjusts for multiple comparisons using false discovery rate (benjamini and hochberg 1995, default) and bonferroni (method="bon")
+takes numeric vector of p-values and adjusts for multiple comparisons using false discovery rate (benjamini and hochberg 1995) and bonferroni (method="bon")
+optionally takes numeric vectors of estimates and standard errors and produces confidence intervals adjusted for multiple comparisons (benjamini et al. 2005)
 }
 \examples{
-from benjamini and hochberg 1995
+#from benjamini and hochberg 1995
 pvals<-c(0.0001, 0.0004, 0.0019, 0.0095, 0.0201, 0.0278, 0.0298, 0.0344, 0.0459, 0.3240, 0.4262, 0.5719, 0.6528, 0.7590, 1.00)
+falsediscovery(pvals)
 falsediscovery(pvals, method="bon")
 
 #from https://www.statisticshowto.com/benjamini-hochberg-procedure/
@@ -39,4 +55,9 @@ pvals<-pvals[-1]
 falsediscovery(pvals)
 falsediscovery(pvals, qstar=0.2)
 falsediscovery(pvals, method="bon")
+#with adjusted CIs
+betas<-summary(otemp)$coefficients[,1][-1]
+stderrs<-summary(otemp)$coefficients[,2][-1]
+falsediscovery(pvalues=pvals, ci=TRUE, estimates=betas, ses=stderrs)
+falsediscovery(pvalues=pvals, ci=TRUE, estimates=betas, ses=stderrs, method="bon")
 }
