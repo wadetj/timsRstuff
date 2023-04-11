@@ -30,7 +30,13 @@
 #' falsediscovery(pvals)
 #' falsediscovery(pvals, qstar=0.2)
 #' falsediscovery(pvals, method="bon")
-#' #note need example with CIs
+#' #with adjusted CIs
+#' betas<-summary(otemp)$coefficients[,1]
+#' stderrs<-summary(otemp)$coefficients[,2]
+#' betas<-betas[-1]
+#' stderrs<-stderrs[-1]
+#' falsediscovery(pvalues=pvals, ci=TRUE, estimates=betas, ses=stderrs)
+#' falsediscovery(pvalues=pvals, ci=TRUE, estimates=betas, ses=stderrs, method="bon")
 #' @export
 
 falsediscovery<-function(pvalues, qstar=0.05, method="fdr", dp=5, ci=FALSE, ses=NULL, estimates=NULL){
