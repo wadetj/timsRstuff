@@ -55,5 +55,9 @@ pvals<-pvals[-1]
 falsediscovery(pvals)
 falsediscovery(pvals, qstar=0.2)
 falsediscovery(pvals, method="bon")
-#note need example with CIs
+#with adjusted CIs
+betas<-summary(otemp)$coefficients[,1][-1]
+stderrs<-summary(otemp)$coefficients[,2][-1]
+falsediscovery(pvalues=pvals, ci=TRUE, estimates=betas, ses=stderrs)
+falsediscovery(pvalues=pvals, ci=TRUE, estimates=betas, ses=stderrs, method="bon")
 }
