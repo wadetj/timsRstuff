@@ -37,6 +37,7 @@ Produces one, two or multi-way tables with percentages. Requires gdata::interlea
 For latex, html output, object can be formatted with knitr::kable
 }
 \examples{
+library(knitr)
 yn<-sample(c("Y", "N"), 100, replace=TRUE)
 sex<-sample(c("M", "F"), 100, replace=TRUE)
 tabpct3(yn)

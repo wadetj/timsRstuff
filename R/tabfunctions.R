@@ -85,6 +85,7 @@ tabpct2=function(row, col=NULL, collab="N", tex=FALSE, rowlab=NULL) {
 #' @param total Logical indicating whether row and column totals are shown (default= TRUE)
 #' @return r x c matrix
 #' @examples
+#' library(knitr)
 #' yn<-sample(c("Y", "N"), 100, replace=TRUE)
 #' sex<-sample(c("M", "F"), 100, replace=TRUE)
 #' tabpct3(yn)
