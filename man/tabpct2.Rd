@@ -21,7 +21,8 @@ tabpct2(row, col = NULL, collab = "N", tex = FALSE, rowlab = NULL)
 r x c matrix
 }
 \description{
-Produces one, two or multi-way tables with percentages
+Produces one, two or multi-way tables with percentages. Requires gdata::interleave
+See tabpct3 for additional flexibility
 }
 \examples{
 data(iris)

@@ -94,7 +94,7 @@ tabpct2=function(row, col=NULL, collab="N", tex=FALSE, rowlab=NULL) {
 #' xx<-tabpct3(yn, sex, dp=1, pcts="col", rowlab=c("No", "Yes"), collab=c("Female", "Male"))
 #' kable(xx, format="latex", caption="My Table")
 #' kable(xx, format="simple", caption="My Table")
-#' ynm<-sample(c("y", "n", "m") 312, replace=T)
+#' ynm<-sample(c("y", "n", "m"), 312, replace=T)
 #' dnum<-sample(c(1:5), 312, replace=T)
 #' tabpct3(dnum, ynm, collab=c("Maybe", "No", "Yes"))
 #' @export
