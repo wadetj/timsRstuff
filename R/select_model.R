@@ -9,6 +9,7 @@
 #'
 #' @param model object of class "glm"
 #' @param include character vector of variables excluded from selection
+#' @param detail 1 or 0 (default 1). Shows selection detail (1=Yes, 0=No, see trace from -stepAIC)
 #' @return "glm" object
 #' @examples
 #' utils::data(survey, package = "MASS")
@@ -24,7 +25,7 @@
 #' @export
 
 
-select_model<-function(model, include=NULL) {
+select_model<-function(model, include=NULL, detail=1) {
   form1<-model$formula
   fam<-model$family
   dat<-model$data
@@ -33,26 +34,26 @@ select_model<-function(model, include=NULL) {
   nomiss1<-na.omit(nomiss1)
   model1<-glm(form1, family=fam, data=nomiss1)
   if(is.null(include)) {
-    ostep1<-MASS::stepAIC(model1)
+    ostep1<-MASS::stepAIC(model1, trace=detail)
     form2<-ostep1$formula
     mvar2<-all.vars(getCall(ostep1)$formula)
     nomiss2<-dplyr::select(dat, all_of(mvar1))
     nomiss2<-na.omit(nomiss2)
     model2<-glm(form2, family=fam,data=nomiss2)
-    ostep2<-MASS::stepAIC(model2)
+    ostep2<-MASS::stepAIC(model2, trace=detail)
    form3<-ostep2$formula
    ofull<-glm(form3, family=fam, data=dat)
    return(ofull)
   }
   if(!is.null(include)) {
     keepform<-as.formula(paste("~", paste(include, collapse="+")))
-    ostep1<-MASS::stepAIC(model1,  scope=list(lower=keepform))
+    ostep1<-MASS::stepAIC(model1,  scope=list(lower=keepform), trace=detail)
     form2<-ostep1$formula
     mvar2<-all.vars(getCall(ostep1)$formula)
     nomiss2<-dplyr::select(dat, all_of(mvar1))
     nomiss2<-na.omit(nomiss2)
     model2<-glm(form2, family=fam,data=nomiss2)
-    ostep2<-MASS::stepAIC(model2, scope=list(lower=keepform))
+    ostep2<-MASS::stepAIC(model2, scope=list(lower=keepform), trace=detail)
     form3<-ostep2$formula
     ofull<-glm(form3, family=fam, data=dat)                     
     return(ofull)
