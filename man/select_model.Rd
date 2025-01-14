@@ -4,12 +4,14 @@
 \alias{select_model}
 \title{Backwards stepwise model  selection using AIC, accounting for missing data}
 \usage{
-select_model(model, include = NULL)
+select_model(model, include = NULL, detail = 1)
 }
 \arguments{
 \item{model}{object of class "glm"}
 
 \item{include}{character vector of variables excluded from selection}
+
+\item{detail}{1 or 0 (default 1). Shows selection detail (1=Yes, 0=No, see trace from -stepAIC)}
 }
 \value{
 "glm" object
