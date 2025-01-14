@@ -5,7 +5,9 @@ Authors@R: person("Timothy", "Wade", email = "wadetj@gmail.com",
                   role = c("aut", "cre"))
 Description: Various utilities for data manipulation and analysis
 Imports: 
-  gdata
+  gdata,
+  dplyr,
+  MASS
 License: None
 Encoding: UTF-8
 RoxygenNote: 7.3.2
