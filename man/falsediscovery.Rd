@@ -21,6 +21,8 @@ falsediscovery(
 
 \item{method}{"fdr" (default) or "bon"}
 
+\item{dp}{rounded decimal places (default=5)}
+
 \item{ci}{FALSE (default) or TRUE to produce adjusted confidence intervals}
 
 \item{ses}{numeric vector of standard errors, required if ci=TRUE}
