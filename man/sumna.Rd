@@ -23,4 +23,5 @@ x<-c(rep(NA, 5))
 sum(x, na.rm=TRUE)
 sumna(x)
 y<-c(rep(NA, 5), 1, 2, 3)
+sumna(y)
 }
