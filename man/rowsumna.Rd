@@ -16,14 +16,14 @@ returns NA only of all are NA, otherwise returns sum of non missing value
 row sums of an array or matrix correctly accounting for NA
 }
 \note{
-Calls sumna. compare to rowSum(x, na.rm=TRUE) which returns 0 if all values are NA
+calls sumna. Compare to rowSum(x, na.rm=TRUE) which returns 0 if all values are NA
 }
 \examples{
-x<-c(rep(NA, 5)
+x<-c(rep(NA, 5))
 y<-c(rep(NA, 3), 1, 2)
 rowSums(cbind(x, y), na.rm=TRUE)
 rowsumna(cbind(x, y))
-library(dpyr)
+library(dplyr)
 xdat<-data.frame(x=c(rep(NA, 5)), y=c(rep(NA, 3), 1, 2), z=c(NA, 1:4))
 xdat \%>\%
 mutate(q=rowsumna(cbind(x, y, z)))

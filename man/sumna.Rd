@@ -19,7 +19,7 @@ sum a vector or numeric variable correctly accounting for NA
 compare to sum(x, na.rm=TRUE) which returns 0 if all values are NA
 }
 \examples{
-x<-c(rep(NA, 5)
+x<-c(rep(NA, 5))
 sum(x, na.rm=TRUE)
 sumna(x)
 y<-c(rep(NA, 5), 1, 2, 3)

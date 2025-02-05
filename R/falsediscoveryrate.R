@@ -5,6 +5,7 @@
 #' @param pvalues numeric vector of p-values
 #' @param qstar overall alpha level (default=0.05)
 #' @param method "fdr" (default) or "bon"
+#' @param dp rounded decimal places (default=5)
 #' @param ci FALSE (default) or TRUE to produce adjusted confidence intervals
 #' @param ses numeric vector of standard errors, required if ci=TRUE 
 #' @param estimates numeric vector of estimates, required if ci=TRUE
