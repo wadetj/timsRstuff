@@ -123,6 +123,7 @@ replacedf<-function(dat, from, to) {
  #' sum(x, na.rm=TRUE)
  #' sumna(x)
  #' y<-c(rep(NA, 5), 1, 2, 3)
+ #' sumna(y)
  #' @export
  
  sumna <- function(x) {
