@@ -80,9 +80,10 @@ tabpct2=function(row, col=NULL, collab="N", tex=FALSE, rowlab=NULL) {
 #' @param col factor or numeric vector which will appear in columns
 #' @param collab character vector of column names
 #' @param rowlab character vector of row names
-#' @param pcts character string 'both', 'row', or 'col' indicating row, column or both percents (default='both')
+#' @param pcts character string 'both', 'row', or 'col' indicating row, column or both percents (default='col')
 #' @param dp integer indicating number of decimal places for percents (default=2)
 #' @param total Logical indicating whether row and column totals are shown (default= TRUE)
+#' @param pval character string indicating 'exact', 'chisq' or 'none' (default='exact') 
 #' @return r x c matrix
 #' @examples
 #' library(knitr)
@@ -97,11 +98,11 @@ tabpct2=function(row, col=NULL, collab="N", tex=FALSE, rowlab=NULL) {
 #' kable(xx, format="simple", caption="My Table")
 #' ynm<-sample(c("y", "n", "m"), 312, replace=TRUE)
 #' dnum<-sample(c(1:5), 312, replace=TRUE)
-#' tabpct3(dnum, ynm, collab=c("Maybe", "No", "Yes"))
+#' tabpct3(dnum, ynm, collab=c("Maybe", "No", "Yes"), pval="chisq")
 #' @export
 
 
-tabpct3=function(row, col=NULL, collab=NULL,  rowlab=NULL, pcts="both", dp=2, total=TRUE) {
+tabpct3=function(row, col=NULL, collab=NULL,  rowlab=NULL, pcts="col", dp=2, total=TRUE, pval="exact") {
   if(!is.null(col)) {
     t1<-table(row, col)
     rowtot<-apply(t1, 1, sum)
@@ -185,9 +186,25 @@ tabpct3=function(row, col=NULL, collab=NULL,  rowlab=NULL, pcts="both", dp=2, to
         }
         
     }
-  
-  return(txt)
+  if(pval=="exact") {
+    epval<-round(fisher.test(t1)$p.value, 4)
+    prow<-c(rep("", ncol(txt)-1), epval)
+    txt_df<-rbind.data.frame(txt, prow)
+    row.names(txt_df)[nrow(qq)]<-"exact p-value"
+    return(txt_df)
   }
+    if(pval=="chisq") {
+      cpval<-round(chisq.test(t1)$p.value, 4)
+      prow<-c(rep("", ncol(txt)-1), cpval)
+      txt_df<-rbind.data.frame(txt, prow)
+      row.names(txt_df)[nrow(qq)]<-"chisq p-value"
+    return(txt_df)  
+    }   
+    
+  if(pval=="none") {
+    return(txt)
+  }
+}
   
 
   if(is.null(col)) {
