@@ -190,14 +190,14 @@ tabpct3=function(row, col=NULL, collab=NULL,  rowlab=NULL, pcts="col", dp=2, tot
     epval<-round(fisher.test(t1)$p.value, 4)
     prow<-c(rep("", ncol(txt)-1), epval)
     txt_df<-rbind.data.frame(txt, prow)
-    row.names(txt_df)[nrow(qq)]<-"exact p-value"
+    row.names(txt_df)[nrow(txt_df)]<-"exact p-value"
     return(txt_df)
   }
     if(pval=="chisq") {
       cpval<-round(chisq.test(t1)$p.value, 4)
       prow<-c(rep("", ncol(txt)-1), cpval)
       txt_df<-rbind.data.frame(txt, prow)
-      row.names(txt_df)[nrow(qq)]<-"chisq p-value"
+      row.names(txt_df)[nrow(txt_df)]<-"chisq p-value"
     return(txt_df)  
     }   
     

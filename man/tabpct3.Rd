@@ -9,9 +9,10 @@ tabpct3(
   col = NULL,
   collab = NULL,
   rowlab = NULL,
-  pcts = "both",
+  pcts = "col",
   dp = 2,
-  total = TRUE
+  total = TRUE,
+  pval = "exact"
 )
 }
 \arguments{
@@ -23,11 +24,13 @@ tabpct3(
 
 \item{rowlab}{character vector of row names}
 
-\item{pcts}{character string 'both', 'row', or 'col' indicating row, column or both percents (default='both')}
+\item{pcts}{character string 'both', 'row', or 'col' indicating row, column or both percents (default='col')}
 
 \item{dp}{integer indicating number of decimal places for percents (default=2)}
 
 \item{total}{Logical indicating whether row and column totals are shown (default= TRUE)}
+
+\item{pval}{character string indicating 'exact', 'chisq' or 'none' (default='exact')}
 }
 \value{
 r x c matrix
@@ -49,5 +52,5 @@ kable(xx, format="latex", caption="My Table")
 kable(xx, format="simple", caption="My Table")
 ynm<-sample(c("y", "n", "m"), 312, replace=TRUE)
 dnum<-sample(c(1:5), 312, replace=TRUE)
-tabpct3(dnum, ynm, collab=c("Maybe", "No", "Yes"))
+tabpct3(dnum, ynm, collab=c("Maybe", "No", "Yes"), pval="chisq")
 }
