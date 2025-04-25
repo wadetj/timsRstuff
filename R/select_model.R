@@ -29,15 +29,16 @@ select_model<-function(model, include=NULL, detail=1) {
   form1<-model$formula
   fam<-model$family
   dat<-model$data
-  mvar1<-all.vars(getCall(model)$formula)
+  mvar1<-all.vars(terms(model))
   nomiss1<-dplyr::select(dat, all_of(mvar1))
   nomiss1<-na.omit(nomiss1)
   model1<-glm(form1, family=fam, data=nomiss1)
   if(is.null(include)) {
     ostep1<-MASS::stepAIC(model1, trace=detail)
     form2<-ostep1$formula
-    mvar2<-all.vars(getCall(ostep1)$formula)
-    nomiss2<-dplyr::select(dat, all_of(mvar1))
+    #mvar2<-all.vars(getCall(ostep1)$formula)
+    mvar2<-all.vars(terms(ostep1))
+    nomiss2<-dplyr::select(dat, all_of(mvar2))
     nomiss2<-na.omit(nomiss2)
     model2<-glm(form2, family=fam,data=nomiss2)
     ostep2<-MASS::stepAIC(model2, trace=detail)
@@ -49,8 +50,8 @@ select_model<-function(model, include=NULL, detail=1) {
     keepform<-as.formula(paste("~", paste(include, collapse="+")))
     ostep1<-MASS::stepAIC(model1,  scope=list(lower=keepform), trace=detail)
     form2<-ostep1$formula
-    mvar2<-all.vars(getCall(ostep1)$formula)
-    nomiss2<-dplyr::select(dat, all_of(mvar1))
+    mvar2<-all.vars(terms(ostep1))
+    nomiss2<-dplyr::select(dat, all_of(mvar2))
     nomiss2<-na.omit(nomiss2)
     model2<-glm(form2, family=fam,data=nomiss2)
     ostep2<-MASS::stepAIC(model2, scope=list(lower=keepform), trace=detail)
